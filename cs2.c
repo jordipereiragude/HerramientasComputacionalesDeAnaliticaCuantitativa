@@ -2144,7 +2144,7 @@ void cs2_cost_restart (double *obj_ad)
 }
 #endif
 
-#ifdef PRINT_ANS
+/*#ifdef PRINT_ANS*/
 void print_solution(node *ndp, arc *arp, long nmin, double *cost,int* flowRetorno,int numArcs,int* or,int* des)
 {
   node *i;
@@ -2165,7 +2165,7 @@ void print_solution(node *ndp, arc *arp, long nmin, double *cost,int* flowRetorn
           {
             if((ni==or[h])&&(N_NODE( a -> head )==des[h]))
             {
-              flowRetorno[h]=cap[ N_ARC (a) ] - ( a -> r_cap );
+	            flowRetorno[h]=cap[ N_ARC (a) ] - ( a -> r_cap );
               h=numArcs;
             }
           }
@@ -2186,7 +2186,8 @@ void print_solution(node *ndp, arc *arp, long nmin, double *cost,int* flowRetorn
 
   //printf("c\n");
 }
-#endif
+/*#endif*/
+
 
 int functMain (int InN,int InM,int countSP,int* sP, int* sPV, int* or, int* des, int* lower, int* upper, int* costOut,int* flowRetorno,int* totFlowRetorno)
 {
@@ -2254,10 +2255,10 @@ int functMain (int InN,int InM,int countSP,int* sP, int* sPV, int* or, int* des,
     printf("ERROR: CS violation\n");
 #endif
   
-#ifdef PRINT_ANS
+/*#ifdef PRINT_ANS*/
   print_solution(ndp, arp, nmin, &cost,flowRetorno,InM,or,des);
-#endif
-  printf("\n");
+/*#endif*/
+/*  printf("\n"); */
   (*totFlowRetorno)=cost;
   free(cap);
   free(nodes - nmin);
